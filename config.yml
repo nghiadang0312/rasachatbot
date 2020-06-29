@@ -1,0 +1,31 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: vi
+pipeline:
+  - name: vietTokenizer
+    intent_tokenization_flag: True
+    intent_split_symbol: "_"
+  - name: RegexFeaturizer
+  - name: CRFEntityExtractor
+  - name: EntitySynonymMapper
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    batch_strategy: sequence
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+  - name: MappingPolicy
+  - name: FormPolicy
+  - name: "FallbackPolicy"
+    nlu_threshold: 0.6
+    core_threshold: 0.3
+    fallback_action_name: "utter_fallback"

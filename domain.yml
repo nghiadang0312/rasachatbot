@@ -1,0 +1,99 @@
+session_config:
+  session_expiration_time: 3
+  carry_over_slots_to_new_session: true
+intents:
+- tra_cuu_hs
+- thong_ke
+- tra_cuu_diachi
+- inform
+- chi_co_dv
+- greet
+- bye
+- chuc_nang
+entities:
+- ma_hs
+- thang_tk
+- nam_tk
+- don_vi
+slots:
+  don_vi:
+    type: unfeaturized
+  ma_hs:
+    type: unfeaturized
+  nam_tk:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized
+  thang_tk:
+    type: unfeaturized
+responses:
+  utter_loi:
+  - text: Không thể kết nối với server! Mong quý khách thông cảm!
+  - text: Lỗi kết nối server!
+  - text: Server đang bảo trì!
+  utter_ask_don_vi:
+  - text: Bạn cần đơn vị nào?
+  utter_ask_ma_hs:
+  - text: Bạn cần tra cứu mã hồ sơ nào?
+  utter_chi_co_dv:
+  - buttons:
+    - payload: Thống kê hồ sơ
+      title: Thống kê số lượng hồ sơ
+    - payload: Địa chỉ
+      title: Tìm thông tin địa chỉ
+    text: Bạn cần thông tin gì ở {don_vi}?
+  utter_ask_thang_tk:
+  - text: Bạn muốn thống kê {don_vi} vào tháng mấy?
+  utter_ask_nam_tk:
+  - text: Bạn muốn thống kê {don_vi} vào năm mấy?
+  utter_saidv:
+  - text: Vui lòng kiểm tra lại đơn vị bạn vừa nhập!
+  utter_saithang:
+  - text: Vui lòng kiểm tra lại tháng bạn vừa nhập!
+  utter_sainam:
+  - text: Vui lòng kiểm tra lại năm bạn vừa nhập!
+  utter_fallback:
+  - text: Xin chào! Tôi là hệ thống Dịch vụ công Sóc Trăng.
+  - text: Chào bạn! Tôi là hệ thống Dịch vụ công Sóc Trăng.
+  utter_chuc_nang:
+  - buttons:
+    - payload: Tra cứu hồ sơ theo mã hồ sơ
+      title: Tra cứu một hồ sơ bất kỳ theo mã hồ sơ.
+    - payload: Thống kê số lượng hồ sơ
+      title: Thống kê số lượng hồ sơ đã xử lý của một đơn vị theo tháng.
+    - payload: Thông tin địa chỉ đơn vị
+      title: Tìm thông tin của một đơn vị bất kỳ.
+    text: 'Tôi có thể giúp bạn:'
+  utter_bye:
+  - text: Cảm ơn bạn đã sử dụng dịch vụ! Tạm biệt bạn.
+  - text: Hẹn gặp lại!
+  - text: Tạm biệt bạn!
+  utter_restart:
+  - buttons:
+    - payload: /chuc_nang
+      title: Có!
+    - payload: /bye
+      title: Không!
+    text: Bạn cần thêm thông tin nữa không ạ!
+actions:
+- utter_chi_co_dv
+- action_tra_cuu_hs
+- action_thong_ke_full
+- action_tra_cuu_diachi
+- action_greet
+- utter_fallback
+- utter_loi
+- utter_ask_don_vi
+- utter_ask_ma_hs
+- utter_ask_thang_tk
+- utter_ask_nam_tk
+- utter_saidv
+- utter_saithang
+- utter_sainam
+- utter_restart
+- utter_bye
+- utter_chuc_nang
+forms:
+- thongke_form
+- diachi_form
+- mahs_form

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Chat</title>
+	<script src="https://storage.googleapis.com/mrbot-cdn/webchat-latest.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="webchat"/>
+// Or you can replace latest with a specific version
+	<script>
+	  WebChat.default.init({
+		selector: "#webchat",
+		initPayload: "/greet",
+		socketUrl: "http://localhost:5005",
+		tooltipPayload: "/tooltip_registered_accounts",
+		tooltipDelay: 40000,
+		socketPath: "/socket.io/",
+		customData: {
+		  language: 'vi'
+		},
+		title: "Dịch vụ công Sóc Trăng",
+		// subtitle: 'A subtitle',
+		inputTextFieldHint: "Nhập vào đây...",
+		connectingText: "Vui lòng chờ trong giây lát...",
+		profileAvatar: "rasa.png",
+		hideWhenNotConnected: false,
+		defaultHighlightAnimation: `@keyframes default-botfront-blinker-animation {
+		  from {
+		  outline-style: none;
+		  outline-color: red;
+		}
+		to {
+		  outline-style: solid;
+		  outline-color: red;
+		}
+	  }`,
+		onSocketEvent: {
+		  'bot_uttered': () => console.log('bot uttered'),
+		},
+		
+		showMessageDate: true,
+		embedded: false,
+		docViewer: true,
+		params: {
+		  images: {
+			dims: {
+			  width: 200,
+			  height: 150
+			}
+		  },
+		  storage: "session"
+		}
+	  })
+	  WebChat.show()
+	  
+	</script>
+</body>
+
+</html>
